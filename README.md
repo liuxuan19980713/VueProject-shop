@@ -22,6 +22,12 @@
 
 ###项目的每一个功能实现步骤
 
+####day05/23
+#####使用mui的 tab-top-webview-main带来的bug
++ 解决webpack默认打包时候的严格模式
++ tabbar无法切换 是由于mui-tab-item和muijs冲突的 ,使用之前在bootstrap的时候找到源码复制替换
++ [Intervention] Unable to preventDefault inside passive event listener due to target being treated as passive（由于目标被视为被动的，无法在被动事件侦听器内预防默认值）
+
 
 
 

@@ -4,8 +4,9 @@ Vue.use(VueRouter);
 import App from './App.vue';
 
 import './css/mui.css';
-import './css/icons-extra.css'
-//mint-ui导入组件区域
+import './css/icons-extra.css';
+
+//m;int-ui导入组件区域
 import { Header,Tabbar, TabItem ,Swipe, SwipeItem,Toast,Button   } from 'mint-ui';
 
 import moment from 'moment';
