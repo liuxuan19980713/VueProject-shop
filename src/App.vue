@@ -1,6 +1,10 @@
 <template>
   <div class="AppContainer">
-    <mt-header fixed title="Vue商城项目"></mt-header>
+    <mt-header fixed title="Vue商城项目">
+     <mt-button icon="back" slot="left" @click="back">返回</mt-button>
+     <mt-button icon="more" slot="right"></mt-button>
+      
+    </mt-header>
 
     <transition>
       <router-view></router-view>
@@ -29,6 +33,13 @@
   </div>
 </template>
 <script>
+export default {
+  methods:{
+    back(){
+      this.$router.back();
+    }
+  }
+}
 </script>
 <style scoped >
 .v-enter {
@@ -48,7 +59,6 @@
   padding-top: 40px;
   background-color: #fff;
   padding-bottom: 50px;
-
 }
 .mint-header.is-fixed {
   z-index: 1314;
@@ -65,19 +75,19 @@
   color: #929292;
 }
 .mui-bar-tab .mui-tab-item1 .mui-icon ~ .mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .mui-bar-tab .mui-tab-item1 .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .myclass {
-    color: #26a2ff !important;
+  color: #26a2ff !important;
 }
 </style>

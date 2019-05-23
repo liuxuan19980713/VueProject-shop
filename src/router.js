@@ -9,6 +9,7 @@ import newsDetail from './components/news/newsDetail.vue';
 import photolist from './components/photo/photolist.vue';
 import photoinfo from './components/photo/photoinfo.vue';
 import goodslist from './components/goods/goodslist.vue';
+import goodsinfo from './components/goods/goodsinfo.vue'
 
 
 const router = new VueRouter({
@@ -17,14 +18,16 @@ const router = new VueRouter({
         { path: '/search', component: tabbarComponentSearch },
         { path: '/shopcart', component: tabbarComponentShopcart },
         { path: '/home', component: tabbarComponentHome },
-        { path: '/', redirect:'/home' },
+        { path: '/', redirect: '/home' },
         { path: '/newsinfo', component: newsInfo },
-        { path: '/home/newsinfo/:id',component:newsDetail},
-        { path: '/home/photolist',component:photolist},
-        { path: '/home/photoinfo/:id',component:photoinfo},
-        { path:　'/goodslist',component:goodslist}
+        { path: '/home/newsinfo/:id', component: newsDetail },
+        { path: '/home/photolist', component: photolist },
+        { path: '/home/photoinfo/:id', component: photoinfo },
+        { path: '/goodslist', component: goodslist },
+        { path: '/goodslist/info/86', component: goodsinfo,name:'user' }
+
     ],
-    linkActiveClass:'myclass'
+    linkActiveClass: 'myclass'
 })
 
 export default router;

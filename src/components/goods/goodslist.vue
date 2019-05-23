@@ -1,6 +1,6 @@
 <template>
     <div class="goodslist-container">
-        <div class="goods-item" v-for="item in goodsList" :key="item.id">
+        <div class="goods-item" v-for="item in goodsList" :key="item.id" @click="linkToGoodslist(item.id)">
             <img :src="item.imgurl" alt="">
             <h3>{{ item.title }}</h3>
             <div class="goods-info">
@@ -8,7 +8,7 @@
               <div><span>热卖中</span> <span>{{ item.count }}</span></div>
             </div>
         </div>
-        <mt-button type="danger" size="large">加载更多</mt-button>
+        <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>
     </div>
 </template>
 <script>
@@ -24,6 +24,15 @@ export default {
             axios.get('http://127.0.0.1:3000/getgoodslist').then(ret=>{
                 this.goodsList = ret.data.message;
             })
+        },
+        getMore(){
+             axios.get('http://127.0.0.1:3000/getgoodslist').then(ret=>{
+               this.goodsList = this.goodsList.concat(ret.data.message);
+            })
+        },
+        linkToGoodslist(id){
+            // this.$router.push('/goodslist/info/'+id)
+            this.$router.push({ name: 'user', params: { userId: id }});
         }
     },
     created(){
