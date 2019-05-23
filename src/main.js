@@ -5,16 +5,12 @@ import App from './App.vue';
 
 import './css/mui.css';
 import './css/icons-extra.css';
-
-//m;int-ui导入组件区域
-import { Header,Tabbar, TabItem ,Swipe, SwipeItem,Toast,Button   } from 'mint-ui';
-
+import './css/global.css';
 import moment from 'moment';
-Vue.component(Header.name, Header,Tabbar.name, Tabbar,TabItem.name, TabItem);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
-
+import MintUI from 'mint-ui';
+Vue.use(MintUI);
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
 Vue.filter('dataFormat',function(dataStr,pattern='MMMM Do YYYY, h:mm:ss a'){
     return  moment(dataStr).format(pattern);
 })

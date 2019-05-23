@@ -48,6 +48,10 @@
   padding-top: 40px;
   background-color: #fff;
   padding-bottom: 50px;
+
+}
+.mint-header.is-fixed {
+  z-index: 1314;
 }
 .mui-bar-tab .mui-tab-item1 {
   display: table-cell;

@@ -1,0 +1,20 @@
+.thumbs{
+    display: flex;
+}
+.thumbs > div{
+    width: 100%;
+}
+.thumbs .my-gallery{
+    display: flex;
+    flex-wrap: wrap;
+}
+.thumbs .my-gallery figure{
+    width: 30%;
+    margin: 4px;
+    box-shadow: 0  0 10px #ccc;
+}
+.thumbs .my-gallery figure img{
+    width: 100%;
+    height: 100px;
+    vertical-align: bottom;
+}
