@@ -1,10 +1,6 @@
 <template>
   <div class="homeSwiper">
-    <mt-swipe :auto="2000" :show-indicators="false">
-      <mt-swipe-item v-for="item in swiperData" :key="item.imgurl">
-        <img :src="item.imgurl" alt>
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiperbox :swiperData="swiperData" :isfull="isfull"></swiperbox>
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <router-link to="/newsinfo">
@@ -49,10 +45,12 @@
 <script>
 import axios from "axios";
 import { Toast } from "mint-ui";
+import swiper from '../swiper/swiper.vue'
 export default {
   data() {
     return {
-      swiperData: []
+      swiperData: [],
+      isfull:true
     };
   },
   methods: {
@@ -69,6 +67,9 @@ export default {
   },
   created() {
     this.getLunboList();
+  },
+  components:{
+    'swiperbox':swiper
   }
 };
 </script>
