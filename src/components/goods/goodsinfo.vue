@@ -88,24 +88,30 @@ export default {
       el.offsetWidth;
       el.style.transform = `translate(${x},${y})`;
       el.style.transition = "all 1.4s ease";
-     
+
       done();
     },
     afterEnter(el) {
       this.flag = !this.flag;
     },
     clickHandle() {
-      console.log(ismove);
       if (ismove) {
         ismove = false;
-        console.log(ismove);
         this.flag = !this.flag;
       }
+
+      var obj = {
+        id: this.id,
+        price: 2999,
+        counts: parseInt(this.counts)
+      };
+      this.$store.commit("addToShopcar", obj);
+
+     
     },
+    //拿到numbox中的值
     getCounts(id) {
       this.counts = id;
-
-      document.getElementById("number").innerText = id;
     }
   },
   created() {

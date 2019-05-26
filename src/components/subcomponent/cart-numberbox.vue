@@ -14,7 +14,7 @@
     export default {
         methods: {
             changeHandle(){
-                this.$emit('number',this.$refs.inputbox.value)
+                
             }
         },
     }
