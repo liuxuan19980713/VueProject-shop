@@ -1,7 +1,7 @@
 <template>
   <div class="AppContainer">
     <mt-header fixed title="Vue商城项目">
-     <mt-button icon="back" slot="left" @click="back">返回</mt-button>
+     <mt-button icon="back" slot="left" @click="back" v-show="flag">返回</mt-button>
      <mt-button icon="more" slot="right"></mt-button>
       
     </mt-header>
@@ -34,9 +34,23 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      flag:false
+    }
+  },
   methods:{
     back(){
       this.$router.back();
+    }
+  },
+  watch:{
+    '$route.path':function(newval){
+      if(newval=='/home'){
+        this.flag = false;
+      }else{
+        this.flag = true;
+      }
     }
   }
 }

@@ -103,7 +103,8 @@ export default {
       var obj = {
         id: this.id,
         price: 2999,
-        counts: parseInt(this.counts)
+        counts: parseInt(this.counts),
+        isSelected:true
       };
       this.$store.commit("addToShopcar", obj);
 

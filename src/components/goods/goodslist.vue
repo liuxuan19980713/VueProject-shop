@@ -5,7 +5,7 @@
             <h3>{{ item.title }}</h3>
             <div class="goods-info">
                <p><span class="newprice">￥{{  item.nowprice}}</span> <span class="oldprice">￥{{ item.oldprice }}</span></p>
-              <div><span>热卖中</span> <span>{{ item.count }}</span></div>
+              <div><span>热卖中</span> <span>剩余：{{ item.count }}</span></div>
             </div>
         </div>
         <mt-button type="danger" size="large" @click="getMore">加载更多</mt-button>

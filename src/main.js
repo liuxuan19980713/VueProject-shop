@@ -19,7 +19,7 @@ Vue.filter('dataFormat', function (dataStr, pattern = 'MMMM Do YYYY, h:mm:ss a')
 import router from './router'
 
 //获取本地的数据
-var car = JSON.parse(localStorage.getItem('car'))||[];
+var car = JSON.parse(localStorage.getItem('car')) || [];
 const store = new Vuex.Store({
     state: {
         cart: car
@@ -41,7 +41,36 @@ const store = new Vuex.Store({
             }
             //将加入购物车的数据保存到本地
             localStorage.setItem('car', JSON.stringify(state.cart))
+        },
+        //numbox数据改变了 通过store上的数据，并且重新保存到本地
+        numboxTostore(state, obj) {
+            state.cart.forEach(item => {
+                if (item.id == obj.id) {
+                    item.counts = parseInt(obj.value)
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.cart))
+        },
+        deleteById(state, id) {
+            //根据id找到对应选项
+            var index = state.cart.findIndex(item => {
+                return item.id == id
+            })
+
+            state.cart.splice(index, 1);
+            localStorage.setItem('car', JSON.stringify(state.cart))
+        },
+        //把switch上数据同步到我们的store上
+        switchChange(state, obj) {
+
+            state.cart.forEach(item => {
+                if (item.id == parseInt(obj.id)) {
+                    item.isSelected = (obj.value)
+                }
+            })
+            localStorage.setItem('car', JSON.stringify(state.cart))
         }
+
     },
     //getters相当于计算属性，只要对应state上的数据发生改变了 getters上党法就会重新去计算出需要的值
     getters: {
@@ -52,6 +81,35 @@ const store = new Vuex.Store({
                 sum += item.counts;
             })
             return sum;
+        },
+        //本地数据同步到numberbox框
+        localAsyncToNumberbox(state) {
+            var o = {};
+            state.cart.forEach(item => {
+                o[item.id] = item.counts
+            })
+            return o;
+        },
+        getSwitchState: (state) => {
+            var o = {};
+            state.cart.forEach(item => {
+                o[item.id] = item.isSelected
+            })
+            return o;
+        },
+        computedTotal: (state) => {
+            var o = {
+                count: 0,
+                price: 0
+            }
+            state.cart.forEach(item => {
+                if (item.isSelected) {
+                    o.count += item.counts;
+                    o.price += item.price * item.counts
+                }
+
+            })
+            return o;
         }
     }
 })
